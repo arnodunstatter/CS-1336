@@ -1,0 +1,59 @@
+/*Student Name: Arno Dunstatter
+Course Name: Programming Fundamentals
+Course Number: CS1336
+Section: 001
+Due Date: 4/28/20
+Date Completed: 4/29/30
+Date Submitted: 4/29/20 */
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+	char correctAnswers[20] = { 'A','D','B','B','C','B','A','B','C','D','A','C','D','B','D','C','C','A','D','B' }; //our correct answers
+	char student[20]; //this will hold the student's answers
+	char temp; //will hold the user input temporarily until validation can be performed
+	int incorrect[20] = {}; //sets default value for all 20 entries to be 0
+	int numCorrect = 0, numIncorrect = 0; //will store the total number of correct and incorrect answers
+
+	cout << "Please enter the student's answers. Valid input is 'A', 'B', 'C', or 'D'.\n";
+	for (int i = 0; i < 20; ++i) //this will collect all the student's answers and perform input validation
+	{
+		cin >> temp;
+		while (temp != 'A' && temp != 'B' && temp != 'C' && temp != 'D') //input validation
+		{
+			cout << "That was not a valid input. Please try again: ";
+			cin >> temp;
+		}
+		student[i] = temp; //only valid inputs will be stored in our student array
+	}
+	for (int i = 0; i < 20; ++i) //this checks the student's answers against the correct answers and updates our relevant variables and the array which holds the question numbers for questions answered incorrectly
+	{
+		if (correctAnswers[i] == student[i])
+			++numCorrect; //increments the number of questions answered correctly
+		else
+		{
+			++numIncorrect; //increments the number of questions answered incorrectly
+			incorrect[i] = i + 1; //stores the question number which was answered incorrectly
+		}
+	}
+	//the following if/else tree will output whether the student passed or failed
+	if (numCorrect >= 15)
+		cout << "The student passed.\n";
+	else
+		cout << "The student failed.\n";
+
+	//this will output the number of answers answered correctly and incorrectly
+	cout << "The student answered " << numCorrect << " questions correctly and " << numIncorrect << " questions incorrectly.\n";
+	
+	//the following will output the numbers of questiosn answered incorrectly
+	cout << "The following is the list of question numbers which were answered incorrectly: \n";
+	for (int i = 1; i < 20; ++i) //this will print out the list of questions answered incorrectly
+	{
+		if (incorrect[i] != 0) //if not default, then the answer was answered incorrectly
+			cout << incorrect[i] << endl;
+	}
+
+	return 0; //signals the end of the program
+}

@@ -1,0 +1,19 @@
+/*Student Name: Arno Dunstatter
+Course Name: Programming Fundamentals
+Course Number: CS1336
+Section: 001
+Due Date: 1/26/20
+Date Completed: 1/23/20
+Date Submitted: 1/23/20 */
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+	float holds, travel, mpg; //initialize variables in gal., mi., miles per gallon
+	holds = 15; //gives data to the variables
+	travel = 375;
+	mpg = travel / holds; //calculates mpg
+	cout << "That car gets " << mpg << " mpg.\n"; //prints answer
+	return 0;
+}
